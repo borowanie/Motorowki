@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 <title>Minimalism - Home</title>
@@ -9,6 +9,14 @@
   <![endif]-->
 <link rel="shortcut icon" href="images/favicon.gif" type="image/x-icon"/> 
 <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 </head>
 <body>
    <div class="bg">
@@ -33,52 +41,11 @@
   	   <!--end menu-->
       <!--end header-->
 	</header>
-   <!--start intro-->
-   <section id="intro">
-      <hgroup>
-      <h1>"Simplicity is the ultimate sophistication"<span>- Leonardo da Vinci</span></h1>
-      <h2>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-      Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</h2>
-      </hgroup>
-   </section>
+  
    <!--end intro-->
    <!--start holder-->
    <div class="holder_content">
-      <section class="group1">
-         <h3>About us</h3>
-         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-         Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy.</p>
-         <a class="photo_hover3" href="#"><img src="images/picture1.jpg" width="240" height="214" alt="picture1"/></a>
-         <a href="#"><span class="button">Read more</span></a>   
-       </section>
-      <section class="group2">
-         <h3>Services</h3>
-         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-         Vestibulum condimentum  facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy.</p>
-         <a class="photo_hover3" href="#"><img src="images/picture2.jpg" width="240" height="214" alt="picture1"/></a>
-         <a href="#"><span class="button">Read more</span></a>   
-       </section>
-      <section class="group3">
-         <h3>Latest news</h3>
-         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. 
-         Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy.   </p>
-         <a class="photo_hover3" href="#"><img src="images/picture3.jpg" width="240" height="214" alt="picture1"/></a>
-         <a href="#"><span class="button">Read more</span></a>   
-   	</section>
-	</div>
-	<!--end holder-->
-   <!--start holder-->
-   <div class="holder_content">
-      <section class="group4">
-         <h3>Latest article</h3>
-         <article>
-         <h4>22.08.2011  - Design to express </h4>
-         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
-         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst. Nulla nonummy. Cras quis libero.</p>
-         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec molestie. Sed aliquam sem ut arcu. Phasellus sollicitudin. Vestibulum condimentum facilisis nulla. In hac habitasse platea dictumst.</p>
-         </article> 
-       </section>
-   </div>
+      <p>jestesm koniem i lubie placki</p>
    <!--end holder-->
    </div>
    <!--end container-->
