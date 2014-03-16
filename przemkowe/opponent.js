@@ -31,10 +31,10 @@ function CreateBoard(){
 	             		cellContent.setAttribute("type","button");
 	             		a = j-1;
 	             		b = i-1;
-	             		cellContent.setAttribute("id",a+'.'+b);
+	             		cellContent.setAttribute("id","op:"+a+'.'+b);
 	             		cellContent.setAttribute("style","width: 24px;");
-	             		cellContent.setAttribute("onclick","shipClick(this.id)");
-	             		cellContent.disabled = true;
+	             		cellContent.setAttribute("onclick","SendFire(this.id)");
+	             		cellContent.disabled = false;
 	             	}
 	                cell.appendChild(cellContent);
 	                row.appendChild(cell);
@@ -46,4 +46,20 @@ function CreateBoard(){
 
        	right.appendChild(tbl);
         tbl.setAttribute("border", "2");
+}
+
+function SendFire(mleko){
+	var hit = document.getElementById(mleko);
+	if (IfHit(mleko[3],mleko[5])) {
+		hit.setAttribute("value","X");
+	}else{
+		hit.setAttribute("value","•");
+		//hit.setAttribute("style","background-image:url('gfx/mishit.png');width:24px;background-size:24px 24px;")
+	};
+}
+
+function IfHit(y,x){
+	//console.log("x: "+x+" y: "+y);
+	//wysyłasz koordynaty x i y zwracasz czy trafiony (true) czy nie (false), koordynaty są zgodne z tablicą, x: 0 do 9, y tak samo
+	return Math.random() < 0.5;
 }

@@ -19,6 +19,15 @@ function createArray(){
 	}
 }
 
+function getOpponentHit(){//tej funkcji nigdzie nie wywołuje, do niej mają trafić koordynaty strzału przeciwnika, czy robisz jakieś zdażenie nasłuchujące czy cos innego, sam wybierz xD
+	var hitid = x+"."+y;
+	var kupa = document.getElementById(hitid);
+	if(hitIsTrue){
+		kupa.setAttribute("value","X");
+	}else{
+		kupa.setAttribute("value","•");
+	}
+}
 
 function createShipButtons(){
 	settings = document.getElementById("playerSettings");
