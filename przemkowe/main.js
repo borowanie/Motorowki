@@ -50,6 +50,7 @@ function createShipButtons(){
 
 function sendShip(){
 		//Tu ma byc wysyłanie tablicy sendarr, jak to można wywołać, to jakieś statki są już postawione (na razie przynajmniej jeden)
+		GenOpponentBoard();
 }
 
 function createTable(){
@@ -164,11 +165,14 @@ function shipClick(aa){
 				means.setAttribute("onclick","drawShip(this.id)");
 			};
 		};
+		gen.disabled = false;
 	};
+
+	
 }
 
 function drawShip(temp){
-
+gen.disabled = false;
 	clearShadow();
 	lasttemp = temp;
 	var y = shiptmp.charAt(0);
@@ -203,7 +207,7 @@ function drawShip(temp){
 		};
 	};
 	console.log(sendarr);
-	gen.disabled = false;
+	
 }
 
 function clearShadow(){
