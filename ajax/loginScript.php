@@ -5,7 +5,7 @@ include 'pass.php';
 
 ///////////////////////////////////////////////////////////////////////////
 
-$login = $_POST["login"];
+$login = $_POST["email"];
 $password = $_POST["password"];
 
 //pdo
@@ -20,14 +20,12 @@ try {
 
 if($result = $sth->fetch()){
 	if($result["password"] == $password){
-		if(isset($_SESSION['loggedIn']))
-			$_SESSION['loggedIn']=$login;
-		else
-			$_SESSION['loggedIn']=$login;
+		
+		$_SESSION['loggedIn']=$login;
 
-		echo "use = ". $_SESSION['loggedIn'];
+		header("Location: ../rooms.php");
 	}else{
-		echo "wrong password";
+		header("Location: ../login.php");
 	}
 	
 }
