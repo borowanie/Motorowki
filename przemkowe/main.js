@@ -10,13 +10,15 @@ function main () {
 }
 
 function createArray(){
-	arr = [];
-	for (var j = 1; j <= 10; j++) {
-		for (var i = 1; i <= 10; i++) {
-			arr.push(0);
-		};
-	};
+	sendarr = new Array(10);
+	for (var i = 0; i < sendarr.length; i++) {
+	    sendarr[i] = new Array(10);
+	    for(var j = 0; j < sendarr[i].length; j++ ) {
+	       sendarr[i][j] = "0";
+	    }
+	}
 }
+
 
 function createShipButtons(){
 	settings = document.getElementById("playerSettings");
@@ -33,8 +35,22 @@ function createShipButtons(){
 		settings.appendChild(ship);
 		tmp = tmp+"X";
 	};
+
+		gen = document.createElement("input");
+		gen.setAttribute("type","button");
+		gen.setAttribute("id","bt-generuj");
+		gen.setAttribute("value","Zatwierdź");
+		gen.setAttribute("onclick","sendShip()");
+		gen.disabled = true;
+
+		var p = document.createElement("p");
+		settings.appendChild(p);
+		settings.appendChild(gen);
 }
 
+function sendShip(){
+		//Tu ma byc wysyłanie tablicy sendarr, jak to można wywołać, to jakieś statki są już postawione (na razie przynajmniej jeden)
+}
 
 function createTable(){
 	var playerTable = document.getElementById("playerTable");
@@ -82,6 +98,7 @@ function createTable(){
 
 function setShip(tmp){
 	//console.log(tmp);
+	clearShadow();
 	shipLength = tmp;
 	for (var j = 0; j <= 9; j++) {
 		for (var i = 0; i < 9; i++) {
@@ -89,9 +106,11 @@ function setShip(tmp){
 			bt.disabled = false;
 		}
 	}
+	
 }
 
 function shipClick(aa){
+
 	shiptmp = aa;
 	for (var j = 0; j <= 9; j++) {
 		for (var i = 0; i < 9; i++) {
@@ -99,64 +118,64 @@ function shipClick(aa){
 			bt.disabled = true;
 		}
 	}
-
+	console.log(shipLength);
 	if (shipLength>0) {
 		shipLength--;
-		var x = aa.charAt(0);
-		var y = aa.charAt(2);
+		var y = aa.charAt(0);
+		var x = aa.charAt(2);
 
 		var tmp  = document.getElementById(aa);
 		tmp.setAttribute("style","background-Color:#556;width: 24px;");
 		if (shipLength>0) {
-			var bb = x-1+"."+y;
-			var means = document.getElementById(bb);
-			temparr.push(bb);
-			means.disabled = false;
-			means.setAttribute("style","background-Color:#357EC7;width: 24px;");
-			means.setAttribute("onclick","drawShip(this.id)");
-
-			var b1 = x-1+2+"."+y; 
-			means = document.getElementById(b1);
-			temparr.push(b1);
-			means.disabled = false;
-			means.setAttribute("style","background-Color:#357EC7;width: 24px;");
-			means.setAttribute("onclick","drawShip(this.id)");
-
-			y--
-			var b2 = x+"."+y;
-			means = document.getElementById(b2);
-			temparr.push(b2);
-			means.disabled = false;
-			//console.log(aa +"  " + bb +"  "+ b1+"  "+ b2);
-			means.setAttribute("style","background-Color:#357EC7;width: 24px;");
-			means.setAttribute("onclick","drawShip(this.id)");
-			y+=2;
-			var b3 = x+"."+y;
-			means = document.getElementById(b3);
-			temparr.push(b3);
-			means.disabled = false;
-			means.setAttribute("style","background-Color:#357EC7;width: 24px;");
-			means.setAttribute("onclick","drawShip(this.id)");
+			if (y>shipLength-1) {
+				var bb = y-1+"."+x;
+				var means = document.getElementById(bb);
+				temparr.push(bb);
+				means.disabled = false;
+				means.setAttribute("style","background-Color:#357EC7;width: 24px;");
+				means.setAttribute("onclick","drawShip(this.id)");
+			};
+			if (y<10-shipLength) {
+				var b1 = y-1+2+"."+x; 
+				means = document.getElementById(b1);
+				temparr.push(b1);
+				means.disabled = false;
+				means.setAttribute("style","background-Color:#357EC7;width: 24px;");
+				means.setAttribute("onclick","drawShip(this.id)");
+			};
+			console.log(x+"  "+shipLength);
+			if (x>shipLength-1) {
+				var kupa = x-1;
+				var b2 = y+"."+kupa;
+				means = document.getElementById(b2);
+				temparr.push(b2);
+				means.disabled = false;
+				//console.log(aa +"  " + bb +"  "+ b1+"  "+ b2);
+				means.setAttribute("style","background-Color:#357EC7;width: 24px;");
+				means.setAttribute("onclick","drawShip(this.id)");
+			};
+			if (x<9-shipLength) {
+				x++;
+				var b3 = y+"."+x;
+				means = document.getElementById(b3);
+				temparr.push(b3);
+				means.disabled = false;
+				means.setAttribute("style","background-Color:#357EC7;width: 24px;");
+				means.setAttribute("onclick","drawShip(this.id)");
+			};
 		};
 	};
 }
 
 function drawShip(temp){
 
-	for (var i = temparr.length - 1; i >= 0; i--) {
-		if (temparr[i]!=lasttemp) {
-			var mleko = document.getElementById(temparr[i]);
-			mleko.setAttribute("style","width: 24px;");
-			mleko.disabled = true;
-		};
-	};
-	temparr = [];
+	clearShadow();
 	lasttemp = temp;
-	var x = shiptmp.charAt(0);
-	var y = shiptmp.charAt(2);
+	var y = shiptmp.charAt(0);
+	var x = shiptmp.charAt(2);
 
-	var x1 = temp.charAt(0);
-	var y1 = temp.charAt(2);
+	var y1 = temp.charAt(0);
+	var x1 = temp.charAt(2);
 
 	if ((x-x1)!=0) {
 		wektorx = x-x1;
@@ -166,20 +185,34 @@ function drawShip(temp){
 		wektorx = 0;
 	};
 
+	sendarr[y][x] = 1;
 
 	for (var i = 1; i <= shipLength; i++) {
 		if (wektorx==0) {
 			y-= wektory;
-
-			console.log(x+"."+y);
-			part = document.getElementById(x+"."+y);
+			//console.log(x+"."+y);
+			part = document.getElementById(y+"."+x);
 			part.setAttribute("style","background-Color:#556;width: 24px;");
+			sendarr[y][x] = 1;
 		}else if (wektory==0) {
 			x-= wektorx;
-			console.log(x+"."+y);
-			part = document.getElementById(x+"."+y);
+			//console.log(x+"."+y);
+			part = document.getElementById(y+"."+x);
 			part.setAttribute("style","background-Color:#556;width: 24px;");
-
+			sendarr[y][x] = 1;
 		};
 	};
+	console.log(sendarr);
+	gen.disabled = false;
+}
+
+function clearShadow(){
+		for (var i = temparr.length - 1; i >= 0; i--) {
+		if (temparr[i]!=lasttemp) {
+			var mleko = document.getElementById(temparr[i]);
+			mleko.setAttribute("style","width: 24px;");
+			mleko.disabled = true;
+		};
+	};
+	temparr = [];
 }
