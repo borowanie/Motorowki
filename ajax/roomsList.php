@@ -26,9 +26,7 @@ foreach($sth as $row)
 	array_push($room, $row['roomName']);
 	array_push($p1, $row['p1']);
 	array_push($p2, $row['p2']);
-	array_push($result, $room, $p1, $p2);
 
-	echo json_encode($result); 
 	      //echo $row['nazwa_pokoju'];
 
 /*	array_push($room, $row['nazwa_pokoju']);
@@ -36,6 +34,8 @@ foreach($sth as $row)
 	array_push($p2, $row['p2']);*/
           //$result.push($row["nazwa_pokoju"]);
 }
+	array_push($result, $room, $p1, $p2);
+	echo json_encode($result); 
 /*$result = Array();
 foreach($sth as $row)
 {
