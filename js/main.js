@@ -1,4 +1,4 @@
-function main () {
+jQuery(document).ready(function($) {
 	temparr = []; //zmienna tylko do usuwania śladów
 	lasttemp = 0;//podobnie jak wyzej
 	shipLength=0;
@@ -6,16 +6,16 @@ function main () {
 	createArray();
 	createTable();
 	createShipButtons();
-	left = document.getElementById("left");
-}
+	left = document.getElementById("left");	
+});
 
 function createArray(){
 	sendarr = new Array(10);
 	for (var i = 0; i < sendarr.length; i++) {
-	    sendarr[i] = new Array(10);
-	    for(var j = 0; j < sendarr[i].length; j++ ) {
-	       sendarr[i][j] = "0";
-	    }
+		sendarr[i] = new Array(10);
+		for(var j = 0; j < sendarr[i].length; j++ ) {
+			sendarr[i][j] = "0";
+		}
 	}
 }
 
@@ -45,68 +45,68 @@ function createShipButtons(){
 		tmp = tmp+"X";
 	};
 
-		gen = document.createElement("input");
-		gen.setAttribute("type","button");
-		gen.setAttribute("id","bt-generuj");
-		gen.setAttribute("value","Zatwierdź");
-		gen.setAttribute("onclick","sendShip()");
-		gen.disabled = true;
+	gen = document.createElement("input");
+	gen.setAttribute("type","button");
+	gen.setAttribute("id","bt-generuj");
+	gen.setAttribute("value","Zatwierdź");
+	gen.setAttribute("onclick","sendShip()");
+	gen.disabled = true;
 
-		var p = document.createElement("p");
-		settings.appendChild(p);
-		settings.appendChild(gen);
+	var p = document.createElement("p");
+	settings.appendChild(p);
+	settings.appendChild(gen);
 }
 
 function sendShip(){
 		//Tu ma byc wysyłanie tablicy sendarr, jak to można wywołać, to jakieś statki są już postawione (na razie przynajmniej jeden)
 		GenOpponentBoard();
-}
+	}
 
-function createTable(){
-	var playerTable = document.getElementById("playerTable");
-    var tbl = document.createElement("table");
-    var tblBody = document.createElement("tbody");
-    tmp = 0;
-    var strInputstring = " ABCDEFGHIJ"
-        for (var j = 0; j <= 10; j++) {
+	function createTable(){
+		playerTable = document.getElementById("playerTable");
+		var tbl = document.createElement("table");
+		var tblBody = document.createElement("tbody");
+		tmp = 0;
+		var strInputstring = " ABCDEFGHIJ"
+		for (var j = 0; j <= 10; j++) {
 
-            var row = document.createElement("tr");
-            if (j==0) {
-            	for (var i = 0; i < 10; i++) {
-            		var cell = document.createElement("td");    
-	             	var cellContent = document.createTextNode(tmp++);
-	                cell.appendChild(cellContent);
-	                row.appendChild(cell);
-            	};
-            tblBody.appendChild(row);
-            }else{
-	            for (var i = 0; i < 10; i++) {
-	             	var cell = document.createElement("td");    
-	             	if (i==0) {
-	             		var cellContent = document.createTextNode(strInputstring.charAt(j));
-	             	}else{
-	             		var cellContent = document.createElement("input");
-	             		cellContent.setAttribute("type","button");
-	             		a = j-1;
-	             		b = i-1;
-	             		cellContent.setAttribute("id",a+'.'+b);
-	             		cellContent.setAttribute("style","width: 24px;");
-	             		cellContent.setAttribute("onclick","shipClick(this.id)");
-	             		cellContent.disabled = true;
-	             	}
-	                cell.appendChild(cellContent);
-	                row.appendChild(cell);
-	            }
-            tblBody.appendChild(row);
-        	}
-        }
-        tbl.appendChild(tblBody);
+			var row = document.createElement("tr");
+			if (j==0) {
+				for (var i = 0; i < 10; i++) {
+					var cell = document.createElement("td");    
+					var cellContent = document.createTextNode(tmp++);
+					cell.appendChild(cellContent);
+					row.appendChild(cell);
+				};
+				tblBody.appendChild(row);
+			}else{
+				for (var i = 0; i < 10; i++) {
+					var cell = document.createElement("td");    
+					if (i==0) {
+						var cellContent = document.createTextNode(strInputstring.charAt(j));
+					}else{
+						var cellContent = document.createElement("input");
+						cellContent.setAttribute("type","button");
+						a = j-1;
+						b = i-1;
+						cellContent.setAttribute("id",a+'.'+b);
+						cellContent.setAttribute("style","width: 24px;");
+						cellContent.setAttribute("onclick","shipClick(this.id)");
+						cellContent.disabled = true;
+					}
+					cell.appendChild(cellContent);
+					row.appendChild(cell);
+				}
+				tblBody.appendChild(row);
+			}
+		}
+		tbl.appendChild(tblBody);
 
-        playerTable.appendChild(tbl);
-        tbl.setAttribute("border", "2");
-}
+		playerTable.appendChild(tbl);
+		tbl.setAttribute("border", "2");
+	}
 
-function setShip(tmp){
+	function setShip(tmp){
 	//console.log(tmp);
 	clearShadow();
 	shipLength = tmp;
@@ -181,7 +181,7 @@ function shipClick(aa){
 }
 
 function drawShip(temp){
-gen.disabled = false;
+	gen.disabled = false;
 	clearShadow();
 	lasttemp = temp;
 	var y = shiptmp.charAt(0);
@@ -220,7 +220,7 @@ gen.disabled = false;
 }
 
 function clearShadow(){
-		for (var i = temparr.length - 1; i >= 0; i--) {
+	for (var i = temparr.length - 1; i >= 0; i--) {
 		if (temparr[i]!=lasttemp) {
 			var mleko = document.getElementById(temparr[i]);
 			mleko.setAttribute("style","width: 24px;");

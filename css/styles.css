@@ -29,7 +29,10 @@ a img {
 
 aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {display: block}
+tr{
+		text-align: center;
 
+}
 /***************************************************
 			      Global styles
 ***************************************************/
@@ -288,12 +291,6 @@ footer {
 	left: 225px;
 	top: 26px;
 	color: white;
-}
-
-.container {
-   width: 980px;
-   margin: 0 auto;
-	background-color: #33CC99;
 }
 
 /***************************************************
