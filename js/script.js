@@ -10,11 +10,7 @@ jQuery(document).ready(function($) {
 		})
 		.done(function() {
 			console.log("success");
-			//window.location.href="rooms/";
-		})
-		.fail(function() {
-			console.log("error");
-			//window.location.href="rooms/";
+			window.location.href="login.php";
 		});
 	});
 });
