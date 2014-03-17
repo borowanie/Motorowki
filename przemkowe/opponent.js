@@ -1,8 +1,9 @@
+
+
 function GenOpponentBoard(){
 	right = document.getElementById("right");
 
 	CreateBoard();
-
 }
 
 function CreateBoard(){

@@ -4,3 +4,7 @@ Potrzebuje od Ciebie API i tutoriala do kodu gdzie:
 3. Mam wykonywac jakies operacje na tych tablicach w *.php?
 4. Co ma Ci zwracac php w JS'ie? I w jakiej formie? Tablica, String, JSON, xml, yml, twig?
 
+ad1.main.js, linia 69 tam jest opisane, tablica sendarr, dwuwymiarowa 10x10
+ad2.opponent.js, linia 62, tylko po co tablica? Na raz klikasz jeden punkt, więc wysyłasz koordy punktu na serwer, na nim sprawdzasz czy tam jest statek i zwracasz true/false, muszę tu dorobić jeszcze blokowanie strzałów, ta funkcja sie wykonuje po kliku
+ad3.Tak, ad2 ci opisałem i raczej tyle
+ad4.Ty decyduj, opisałem w komentarzach, co potrzebuje, żeby było zwrócone
