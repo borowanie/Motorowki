@@ -1,0 +1,6 @@
+Potrzebuje od Ciebie API i tutoriala do kodu gdzie:
+1. Po ulozeniu statkow, klikamy zatwierdz. (potrzebuje od Ciebie tablicy 1 czy 2 wymiarowej nie wiem jak Ty to sobie tam robisz. Ja ja wysylam na serwer i generuje sie u 2 gracza[zakryte pola - jak trafi to jest "x"])
+2. Klikanie myszka przeze mnie w mape przeciwnika(potrzbuje wyslac na serwer tablice z ulozeniem statkow.)
+3. Mam wykonywac jakies operacje na tych tablicach w *.php?
+4. Co ma Ci zwracac php w JS'ie? I w jakiej formie? Tablica, String, JSON, xml, yml, twig?
+
