@@ -53,6 +53,7 @@ function SendFire(mleko){
 	var hit = document.getElementById(mleko);
 	if (IfHit(mleko[3],mleko[5])) {
 		hit.setAttribute("value","X");
+		
 	}else{
 		hit.setAttribute("value","•");
 		//hit.setAttribute("style","background-image:url('gfx/mishit.png');width:24px;background-size:24px 24px;")

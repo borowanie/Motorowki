@@ -8,3 +8,10 @@ ad1.main.js, linia 69 tam jest opisane, tablica sendarr, dwuwymiarowa 10x10
 ad2.opponent.js, linia 62, tylko po co tablica? Na raz klikasz jeden punkt, więc wysyłasz koordy punktu na serwer, na nim sprawdzasz czy tam jest statek i zwracasz true/false, muszę tu dorobić jeszcze blokowanie strzałów, ta funkcja sie wykonuje po kliku
 ad3.Tak, ad2 ci opisałem i raczej tyle
 ad4.Ty decyduj, opisałem w komentarzach, co potrzebuje, żeby było zwrócone
+
+
+1.main.js, linia 69 ta funkcja sie wykonuje po kliku "zatwierdź", w bazie masz zapisać tablice "senarr", która zawiera "moje" statki (1 to statek, 0 brak statku xD)
+2.czekamy gdy drugi gracz kliknie zatwierdź, nie wiem jak to zrobić, ale może to być jakiś response do tej 
+samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
+3.Pierwszy (który jest pierwszy który drugi przyślij z serwera gdy obaj już zapiszą tablice) gracz dostaje możliwość kliku w tablice u przeciwnika, gdy kliknie wywołuje się funkcja w opponent, linia 62, gdzie na serwer wysyłam koordy strzału, na serwerze sprawdzasz te koordy i zwracasz 1 lub zero jeśli trafiony lub nie
+4.mam funkcje w lini 30 main, do której maja trafić koordynaty strzału przeciwnika, nie sprawdzamy go, bo to sie dzieje na serwerze, ale trzeba go zapisać u klienta, czyli to, co serwer dostaje w 3 punkcie, to ma wysłać do drugiego gracza, ale jak dokładnie to rozwiązać to ty jestes specem, można zrobić zapytania co pół sekundy w enterframe...
