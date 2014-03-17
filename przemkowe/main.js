@@ -1,8 +1,13 @@
+var	temparr = []; //zmienna tylko do usuwania śladów
+var	lasttemp = 0;//podobnie jak wyzej
+var	shipLength=0;
+var	shiptmp = 0;
+var whitestain ; //tablica na miejsca, gdzie nie można postawić statków
+
+
+var ships =new Array(4,3,2,1);
+
 function main () {
-	temparr = []; //zmienna tylko do usuwania śladów
-	lasttemp = 0;//podobnie jak wyzej
-	shipLength=0;
-	shiptmp = 0;
 	createArray();
 	createTable();
 	createShipButtons();
@@ -11,10 +16,13 @@ function main () {
 
 function createArray(){
 	sendarr = new Array(10);
+	whitestain = new Array(10);
 	for (var i = 0; i < sendarr.length; i++) {
 	    sendarr[i] = new Array(10);
+	    whitestain[i] = new Array(10);
 	    for(var j = 0; j < sendarr[i].length; j++ ) {
 	       sendarr[i][j] = "0";
+	       whitestain[i][j] = "1";
 	    }
 	}
 }
@@ -32,11 +40,12 @@ function getOpponentHit(){//tej funkcji nigdzie nie wywołuje, do niej mają tra
 function createShipButtons(){
 	settings = document.getElementById("playerSettings");
 	var tmp = "X";
-	for (var i = 1; i <= 5; i++) {
+	for (var i = 1; i <= ships.length; i++) {
 		var ship = document.createElement("input");
 		ship.setAttribute("type","button");
 		ship.setAttribute("id",i);
-		ship.setAttribute("value",tmp);
+		ship.setAttribute("value",ships[i-1]);
+		ship.setAttribute("style","width:"+24*i+"px;");
 		ship.setAttribute("onclick","setShip(this.id)");
 		
 		var p = document.createElement("p");
@@ -101,22 +110,26 @@ function createTable(){
         	}
         }
         tbl.appendChild(tblBody);
-
         playerTable.appendChild(tbl);
         tbl.setAttribute("border", "2");
 }
 
 function setShip(tmp){
 	//console.log(tmp);
-	clearShadow();
+	//clearShadow();
 	shipLength = tmp;
-	for (var j = 0; j <= 9; j++) {
-		for (var i = 0; i < 9; i++) {
-			var bt = document.getElementById(j+"."+i);
-			bt.disabled = false;
+	if (ships[tmp-1]!=0) {
+		for (var j = 0; j <= 9; j++) {
+			for (var i = 0; i < 9; i++) {
+				if (whitestain[j][i]==1) {
+					var bt = document.getElementById(j+"."+i);
+					bt.disabled = false;
+				};
+			}
 		}
+	}else{
+		alert("Postawiłeś już wszystkie statki tego rodzaju!!");
 	}
-	
 }
 
 function shipClick(aa){
@@ -128,7 +141,7 @@ function shipClick(aa){
 			bt.disabled = true;
 		}
 	}
-	console.log(shipLength);
+	//console.log(shipLength);
 	if (shipLength>0) {
 		shipLength--;
 		var y = aa.charAt(0);
@@ -153,7 +166,7 @@ function shipClick(aa){
 				means.setAttribute("style","background-Color:#357EC7;width: 24px;");
 				means.setAttribute("onclick","drawShip(this.id)");
 			};
-			console.log(x+"  "+shipLength);
+			//console.log(x+"  "+shipLength);
 			if (x>shipLength-1) {
 				var kupa = x-1;
 				var b2 = y+"."+kupa;
@@ -173,9 +186,32 @@ function shipClick(aa){
 				means.setAttribute("style","background-Color:#357EC7;width: 24px;");
 				means.setAttribute("onclick","drawShip(this.id)");
 			};
+		}else{
+		ships[shipLength]--;
+		spadaj = shipLength+1;
+		$("#"+spadaj).val( ships[shipLength] );
+		whitestain[y][x] = 0;
+		for (var i = 0; i <= 8; i++) {
+			if (i<=shipLength+2){
+				wy = (y-1)+i;
+				wx = x-1;
+				whitestain[wy][wx] = 0;
+				wy = (y-1)+i;
+				wx = x;
+				whitestain[wy][wx] = 0;
+				wx = x-1+2;
+				console.log(wx);
+				whitestain[wy][wx] = 0;
+			}
 		};
-		gen.disabled = false;
-	};
+	}
+		var statki = 0;
+		for (var i = ships.length - 1; i >= 0; i--) {
+			if(ships[i])statki++;
+		};
+		if (statki==0) {gen.disabled = false;};
+		
+	}
 
 	
 }
@@ -200,27 +236,46 @@ gen.disabled = false;
 
 	sendarr[y][x] = 1;
 
+	for (var i = 0; i <= 8; i++) {
+		if (i<=shipLength+2){
+			wy = (y-1)+i;
+			wx = x-1;
+			whitestain[wy][wx] = 0;
+			wx = x;
+			whitestain[wy][wx] = 0;
+			wx = x-1+2;
+			console.log(wx);
+			whitestain[wy][wx] = 0;
+		}
+	};
+
 	for (var i = 1; i <= shipLength; i++) {
 		if (wektorx==0) {
 			y-= wektory;
 			//console.log(x+"."+y);
 			part = document.getElementById(y+"."+x);
+			whitestain[y][x] = 0;
 			part.setAttribute("style","background-Color:#556;width: 24px;");
 			sendarr[y][x] = 1;
 		}else if (wektory==0) {
 			x-= wektorx;
 			//console.log(x+"."+y);
 			part = document.getElementById(y+"."+x);
+			whitestain[y][x] = 0;
 			part.setAttribute("style","background-Color:#556;width: 24px;");
 			sendarr[y][x] = 1;
 		};
 	};
-	console.log(sendarr);
-	
+
+
+	//console.log(shipLength);
+	ships[shipLength]--;
+	spadaj = shipLength+1;
+	$("#"+spadaj).val( ships[shipLength] );
 }
 
 function clearShadow(){
-		for (var i = temparr.length - 1; i >= 0; i--) {
+	for (var i = temparr.length - 1; i >= 0; i--) {
 		if (temparr[i]!=lasttemp) {
 			var mleko = document.getElementById(temparr[i]);
 			mleko.setAttribute("style","width: 24px;");
