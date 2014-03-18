@@ -99,6 +99,14 @@ function resetShips(){
 
 function sendShip(){
 
+		var posArray = JSON.stringify(sendarr);
+
+		$.ajax({
+			url: 'ajax/sendStartPos.php', //kurwa jak ten plik dziala - i don't kurwa know nie pytaj. ALE DZIALA:P
+			type: 'POST',
+			data: {posArray: posArray},
+		});
+
 	GenOpponentBoard();
 	gen.disabled = true;
 	reset.disabled = true;
