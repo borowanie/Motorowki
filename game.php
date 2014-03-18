@@ -1,9 +1,9 @@
 <?php
 include 'pageTemplate/header.php';
 ?>
-
-
-
+<script type="text/javascript">
+	databaseRow = <?php include 'ajax/sendCurrentPlayer.php';?>;
+</script>
 	<div class="container">
 		<div class="row marketing">
 			<div class="col-lg-6" id="left">

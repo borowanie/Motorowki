@@ -27,7 +27,7 @@ jQuery(document).ready(function($) {
 			table='<table class="table"><tr><th>#</th><th>gracz 1</th><th>gracz 2</th><th>nazwa pokoju</th><th>Login</th></tr>';
 
 			for(i=0;i<tab[0].length;i++){
-				table+="<tr><td>" + i +"</td><td>" + tab[1][i] + "</td><td>" + tab[2][i] + "</td><td>" + tab[0][i] + "</td><td> <a href='game.php?p1=" + tab[1][i] + "'>Wlaź dzwiffffko</a></td></tr>";
+				table+="<tr><td>" + i +"</td><td>" + tab[1][i] + "</td><td>" + tab[2][i] + "</td><td>" + tab[0][i] + "</td><td> <a href='game.php?p1=" + tab[1][i] + "&p2=" + currentPlayer +"'>Wlaź dzwiffffko</a></td></tr>";
 			}
 
 			table+="</table>";
