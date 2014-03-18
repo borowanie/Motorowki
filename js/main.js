@@ -6,27 +6,28 @@ var whitestain ; //tablica na miejsca, gdzie nie można postawić statków
 
 
 var ships =new Array(4,3,2,1);
-createArray();
-createTable();
-createShipButtons();
-left = document.getElementById("left");
-
+$( document ).ready(function() {
+	createArray();
+	createTable();
+	createShipButtons();
+	left = document.getElementById("left");
+})
 
 function createArray(){
 	sendarr = new Array(10);
 	for (var i = 0; i < sendarr.length; i++) {
-		sendarr[i] = new Array(10);
-		for(var j = 0; j < sendarr[i].length; j++ ) {
-			sendarr[i][j] = "0";
-		}
+	    sendarr[i] = new Array(10);
+	    for(var j = 0; j < sendarr[i].length; j++ ) {
+	       sendarr[i][j] = "0";
+	    }
 	}
 
 	whitestain = new Array(12);
 	for (var i = 0; i < whitestain.length; i++) {
-		whitestain[i] = new Array(12);
-		for(var j = 0; j < whitestain[i].length; j++ ) {
-			whitestain[i][j] = "1";
-		}
+	    whitestain[i] = new Array(12);
+	    for(var j = 0; j < whitestain[i].length; j++ ) {
+	       whitestain[i][j] = "1";
+	    }
 	}
 }
 
@@ -57,26 +58,26 @@ function createShipButtons(){
 		tmp = tmp+"X";
 	};
 
-	gen = document.createElement("input");
-	gen.setAttribute("type","button");
-	gen.setAttribute("id","bt-generuj");
-	gen.setAttribute("value","Zatwierdź");
-	gen.setAttribute("onclick","sendShip()");
-	gen.disabled = true;
+		gen = document.createElement("input");
+		gen.setAttribute("type","button");
+		gen.setAttribute("id","bt-generuj");
+		gen.setAttribute("value","Zatwierdź");
+		gen.setAttribute("onclick","sendShip()");
+		gen.disabled = true;
 
-	var p = document.createElement("p");
-	settings.appendChild(p);
-	settings.appendChild(gen);
+		var p = document.createElement("p");
+		settings.appendChild(p);
+		settings.appendChild(gen);
 
-	reset = document.createElement("input");
-	reset.setAttribute("type","button");
-	reset.setAttribute("id","bt-zeruj");
-	reset.setAttribute("value","Resetuj");
-	reset.setAttribute("onclick","resetShips()");
+		reset = document.createElement("input");
+		reset.setAttribute("type","button");
+		reset.setAttribute("id","bt-zeruj");
+		reset.setAttribute("value","Resetuj");
+		reset.setAttribute("onclick","resetShips()");
 
-	var p = document.createElement("p");
-	settings.appendChild(p);
-	settings.appendChild(reset);
+		var p = document.createElement("p");
+		settings.appendChild(p);
+		settings.appendChild(reset);
 }
 
 function resetShips(){
@@ -105,45 +106,45 @@ function sendShip(){
 
 function createTable(){
 	var playerTable = document.getElementById("playerTable");
-	var tbl = document.createElement("table");
-	var tblBody = document.createElement("tbody");
-	tmp = 0;
-	var strInputstring = " ABCDEFGHIJ"
-	for (var j = 0; j <= 10; j++) {
+    var tbl = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+    tmp = 0;
+    var strInputstring = " ABCDEFGHIJ"
+        for (var j = 0; j <= 10; j++) {
 
-		var row = document.createElement("tr");
-		if (j==0) {
-			for (var i = 0; i < 10; i++) {
-				var cell = document.createElement("td");    
-				var cellContent = document.createTextNode(tmp++);
-				cell.appendChild(cellContent);
-				row.appendChild(cell);
-			};
-			tblBody.appendChild(row);
-		}else{
-			for (var i = 0; i < 10; i++) {
-				var cell = document.createElement("td");    
-				if (i==0) {
-					var cellContent = document.createTextNode(strInputstring.charAt(j));
-				}else{
-					var cellContent = document.createElement("input");
-					cellContent.setAttribute("type","button");
-					a = j-1;
-					b = i-1;
-					cellContent.setAttribute("id",a+'.'+b);
-					cellContent.setAttribute("style","width: 24px;");
-					cellContent.setAttribute("onclick","shipClick(this.id)");
-					cellContent.disabled = true;
-				}
-				cell.appendChild(cellContent);
-				row.appendChild(cell);
-			}
-			tblBody.appendChild(row);
-		}
-	}
-	tbl.appendChild(tblBody);
-	playerTable.appendChild(tbl);
-	tbl.setAttribute("border", "2");
+            var row = document.createElement("tr");
+            if (j==0) {
+            	for (var i = 0; i < 10; i++) {
+            		var cell = document.createElement("td");    
+	             	var cellContent = document.createTextNode(tmp++);
+	                cell.appendChild(cellContent);
+	                row.appendChild(cell);
+            	};
+            tblBody.appendChild(row);
+            }else{
+	            for (var i = 0; i < 10; i++) {
+	             	var cell = document.createElement("td");    
+	             	if (i==0) {
+	             		var cellContent = document.createTextNode(strInputstring.charAt(j));
+	             	}else{
+	             		var cellContent = document.createElement("input");
+	             		cellContent.setAttribute("type","button");
+	             		a = j-1;
+	             		b = i-1;
+	             		cellContent.setAttribute("id",a+'.'+b);
+	             		cellContent.setAttribute("style","width: 24px;");
+	             		cellContent.setAttribute("onclick","shipClick(this.id)");
+	             		cellContent.disabled = true;
+	             	}
+	                cell.appendChild(cellContent);
+	                row.appendChild(cell);
+	            }
+            tblBody.appendChild(row);
+        	}
+        }
+        tbl.appendChild(tblBody);
+        playerTable.appendChild(tbl);
+        tbl.setAttribute("border", "2");
 }
 
 function setShip(tmp){
@@ -192,7 +193,7 @@ function shipClick(aa){
 				if (sendarr[y][x-1+1+i]){w3 = false};
 				if (sendarr[y][x-i]){w4 = false};
 			};
-			*/
+*/
 			if (y>shipLength-1) {
 				for (var i = 0; i <= shipLength+1; i++) {
 					if (y>shipLength+1) {
@@ -254,24 +255,24 @@ function shipClick(aa){
 				}
 			};
 		}else{
-			ships[shipLength]--;
-			spadaj = shipLength+1;
-			$("#"+spadaj).val( ships[shipLength] );
-			whitestain[y][x] = 0;
-			for (var i = 0; i <= 8; i++) {
-				if (i<=shipLength+2){
-					wy = (y-1+1)+i;
-					wx = x-1;
-					whitestain[wy][wx] = 0;
-					wy = (y-1+1)+i;
-					wx = x;
-					whitestain[wy][wx] = 0;
-					wx = x-1+2;
-					console.log(wx);
-					whitestain[wy][wx] = 0;
-				}
-			};
-		}
+		ships[shipLength]--;
+		spadaj = shipLength+1;
+		$("#"+spadaj).val( ships[shipLength] );
+		whitestain[y][x] = 0;
+		for (var i = 0; i <= 8; i++) {
+			if (i<=shipLength+2){
+				wy = (y-1+1)+i;
+				wx = x-1;
+				whitestain[wy][wx] = 0;
+				wy = (y-1+1)+i;
+				wx = x;
+				whitestain[wy][wx] = 0;
+				wx = x-1+2;
+				console.log(wx);
+				whitestain[wy][wx] = 0;
+			}
+		};
+	}
 		var statki = 0;
 		for (var i = ships.length - 1; i >= 0; i--) {
 			if(ships[i])statki++;
@@ -284,7 +285,7 @@ function shipClick(aa){
 }
 
 function drawShip(temp){
-	gen.disabled = false;
+gen.disabled = false;
 	clearShadow();
 	lasttemp = temp;
 	var y = shiptmp.charAt(0);
@@ -305,23 +306,23 @@ function drawShip(temp){
 	
 	for (var i = 0; i <= shipLength+2; i++) {
 		
-		if (wektorx==0) {
-			if (wektory>0){wy = y-wektory*i+2;}else{wy = y-wektory*i;}
-			wx = x-1;
-			whitestain[wy][wx] = 0;
-			wx = x;
-			whitestain[wy][wx] = 0;
-			wx = x-1+2;
-			whitestain[wy][wx] = 0;
-		}else if (wektory==0) {
-			if (wektorx>0){wx = x-wektorx*i+1;}else{wx = x-wektorx*i-1;}
-			wy = y;
-			whitestain[wy][wx] = 0;
-			wy = y-1+2;
-			whitestain[wy][wx] = 0;
-			wy = y-1+3;
-			whitestain[wy][wx] = 0;
-		}
+			if (wektorx==0) {
+				if (wektory>0){wy = y-wektory*i+2;}else{wy = y-wektory*i;}
+				wx = x-1;
+				whitestain[wy][wx] = 0;
+				wx = x;
+				whitestain[wy][wx] = 0;
+				wx = x-1+2;
+				whitestain[wy][wx] = 0;
+			}else if (wektory==0) {
+				if (wektorx>0){wx = x-wektorx*i+1;}else{wx = x-wektorx*i-1;}
+				wy = y;
+				whitestain[wy][wx] = 0;
+				wy = y-1+2;
+				whitestain[wy][wx] = 0;
+				wy = y-1+3;
+				whitestain[wy][wx] = 0;
+			}
 	};
 
 	for (var i = 1; i <= shipLength; i++) {
