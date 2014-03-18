@@ -99,10 +99,16 @@ function resetShips(){
 
 
 function sendShip(){
-		//Tu ma byc wysyłanie tablicy sendarr, jak to można wywołać, to jakieś statki są już postawione (na razie przynajmniej jeden)
-		GenOpponentBoard();
-		gen.disabled = true;
-		reset.disabled = true;
+	var posArray = JSON.stringify(sendarr[]);
+	$.ajax({
+		url: 'ajax/sendStartPos.php',
+		type: 'POST',
+		data: {posArray: posArray},
+	});
+
+	GenOpponentBoard();
+	gen.disabled = true;
+	reset.disabled = true;
 }
 
 function createTable(){
