@@ -1,4 +1,3 @@
-/*
 var	temparr = []; //zmienna tylko do usuwania śladów
 var	lasttemp = 0;//podobnie jak wyzej
 var	shipLength=0;
@@ -7,19 +6,12 @@ var whitestain ; //tablica na miejsca, gdzie nie można postawić statków
 
 
 var ships =new Array(4,3,2,1);
-
-function main () {
-jQuery(document).ready(function($) {
-	temparr = []; //zmienna tylko do usuwania śladów
-	lasttemp = 0;//podobnie jak wyzej
-	shipLength=0;
-	shiptmp = 0;
+$( document ).ready(function() {
 	createArray();
 	createTable();
 	createShipButtons();
 	left = document.getElementById("left");
 }
-
 function createArray(){
 	sendarr = new Array(10);
 	for (var i = 0; i < sendarr.length; i++) {
@@ -105,10 +97,10 @@ function resetShips(){
 
 
 function sendShip(){
-		//Tu ma byc wysyłanie tablicy sendarr, jak to można wywołać, to jakieś statki są już postawione (na razie przynajmniej jeden)
-		GenOpponentBoard();
-		gen.disabled = true;
-		reset.disabled = true;
+
+	GenOpponentBoard();
+	gen.disabled = true;
+	reset.disabled = true;
 }
 
 function createTable(){
@@ -200,7 +192,7 @@ function shipClick(aa){
 				if (sendarr[y][x-1+1+i]){w3 = false};
 				if (sendarr[y][x-i]){w4 = false};
 			};
-
+*/
 			if (y>shipLength-1) {
 				for (var i = 0; i <= shipLength+1; i++) {
 					if (y>shipLength+1) {
@@ -364,4 +356,4 @@ function clearShadow(){
 		};
 	};
 	temparr = [];
-}*/
+}
