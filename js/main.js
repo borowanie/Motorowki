@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+/*
 var	temparr = []; //zmienna tylko do usuwania śladów
 var	lasttemp = 0;//podobnie jak wyzej
 var	shipLength=0;
@@ -9,13 +9,11 @@ var whitestain ; //tablica na miejsca, gdzie nie można postawić statków
 var ships =new Array(4,3,2,1);
 
 function main () {
-=======
-/*jQuery(document).ready(function($) {
+jQuery(document).ready(function($) {
 	temparr = []; //zmienna tylko do usuwania śladów
 	lasttemp = 0;//podobnie jak wyzej
 	shipLength=0;
 	shiptmp = 0;
->>>>>>> e8d7fda5b4d093f576605427d23ff6b31df6dc7f
 	createArray();
 	createTable();
 	createShipButtons();
@@ -202,7 +200,7 @@ function shipClick(aa){
 				if (sendarr[y][x-1+1+i]){w3 = false};
 				if (sendarr[y][x-i]){w4 = false};
 			};
-*/
+
 			if (y>shipLength-1) {
 				for (var i = 0; i <= shipLength+1; i++) {
 					if (y>shipLength+1) {

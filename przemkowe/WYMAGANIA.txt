@@ -52,7 +52,8 @@ samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
 		
 		*/
 
-3. 
+	-ustawia zmienne p1pos/p2pos (zaleznie od gracza), i ustawia p1start na true - sprawdzenie czy sa gotowi. 
+3. 	Sprawdzanie czy 2 gracz juz jest gotowy(funkcja wlacza sie dopiero po tym jak Ty juz jestes gotowy - PAMIETAJ!!) 
 
 
 
