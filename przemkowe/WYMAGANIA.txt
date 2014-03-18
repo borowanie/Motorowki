@@ -54,13 +54,23 @@ samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
 
 	-ustawia zmienne p1pos/p2pos (zaleznie od gracza), i ustawia p1start na true - sprawdzenie czy sa gotowi. 
 3. 	Sprawdzanie czy 2 gracz juz jest gotowy(funkcja wlacza sie dopiero po tym jak Ty juz jestes gotowy - PAMIETAJ!!) 
+	
+	//tworzymy sobie interval do sprawdziania czy juz zaczal ten czubek
+	opStartInterval = setInterval(function(){opponentStarted()},500);
+	
+	function opponentStarted(){
+		$.ajax({
+			url: 'ajax/opponentStarted.php', 
+			type: 'POST',
+		}).complete(function(e){
+			if(e.responseText == "1"){
+				clearInterval(opStartInterval);
 
 
-
-
-
-
-
+				//////////////////akcja ze jest gotowy/////////////////
+			}
+		});
+	}
 
 
 
