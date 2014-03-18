@@ -18,13 +18,13 @@ $result = $sth->fetch();
 
 if($_SESSION['actualPlayer'] == 1){
 	if($result["p2start"]=="1"){
-		echo "1";		
+		echo $result["p2pos"];
 	}else{
 		echo "0";
 	}
 }else{
 	if($result["p1start"]=="1"){
-		echo "1";
+		echo $result["p1pos"];
 	}else{
 		echo "0";
 	}
