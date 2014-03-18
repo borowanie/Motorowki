@@ -107,9 +107,36 @@ function sendShip(){
 			data: {posArray: posArray},
 		});
 
-	GenOpponentBoard();
+	
 	gen.disabled = true;
 	reset.disabled = true;
+
+	for (var i = 1; i <= ships.length; i++) {
+		var cos = document.getElementById(i);
+		cos.disabled = true;
+	}
+	opStartInterval = setInterval(function(){opponentStarted()},2000);
+}
+
+var timer = true;
+
+function opponentStarted(){
+	if (timer) {
+		$.ajax({
+			url: 'ajax/opponentStarted.php', 
+			type: 'POST',
+		}).complete(function(e){
+			if(e.responseText != "0"){
+				clearInterval(opStartInterval);
+				//z responsa przychodzi Ci tablica jaka chlopek sobie zrobil;
+				//var opponentShipsTmpArrayChujCipaCyckiOlej = e.responseText;
+
+
+				//////////////////akcja ze jest gotowy/////////////////
+				GenOpponentBoard();
+			}
+		});
+	}
 }
 
 function createTable(){
@@ -266,6 +293,7 @@ function shipClick(aa){
 		ships[shipLength]--;
 		spadaj = shipLength+1;
 		$("#"+spadaj).val( ships[shipLength] );
+		sendarr[y][x] = 1;
 		whitestain[y][x] = 0;
 		for (var i = 0; i <= 8; i++) {
 			if (i<=shipLength+2){
