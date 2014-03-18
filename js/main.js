@@ -1,4 +1,4 @@
-jQuery(document).ready(function($) {
+/*jQuery(document).ready(function($) {
 	temparr = []; //zmienna tylko do usuwania śladów
 	lasttemp = 0;//podobnie jak wyzej
 	shipLength=0;
@@ -228,4 +228,4 @@ function clearShadow(){
 		};
 	};
 	temparr = [];
-}
+}*/

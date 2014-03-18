@@ -1,4 +1,4 @@
-Potrzebuje od Ciebie API i tutoriala do kodu gdzie:
+kurPotrzebuje od Ciebie API i tutoriala do kodu gdzie:
 1. Po ulozeniu statkow, klikamy zatwierdz. (potrzebuje od Ciebie tablicy 1 czy 2 wymiarowej nie wiem jak Ty to sobie tam robisz. Ja ja wysylam na serwer i generuje sie u 2 gracza[zakryte pola - jak trafi to jest "x"])
 2. Klikanie myszka przeze mnie w mape przeciwnika(potrzbuje wyslac na serwer tablice z ulozeniem statkow.)
 3. Mam wykonywac jakies operacje na tych tablicach w *.php?
@@ -11,7 +11,49 @@ ad4.Ty decyduj, opisałem w komentarzach, co potrzebuje, żeby było zwrócone
 
 
 1.main.js, linia 69 ta funkcja sie wykonuje po kliku "zatwierdź", w bazie masz zapisać tablice "senarr", która zawiera "moje" statki (1 to statek, 0 brak statku xD)
+
+
 2.czekamy gdy drugi gracz kliknie zatwierdź, nie wiem jak to zrobić, ale może to być jakiś response do tej 
 samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
+
+
 3.Pierwszy (który jest pierwszy który drugi przyślij z serwera gdy obaj już zapiszą tablice) gracz dostaje możliwość kliku w tablice u przeciwnika, gdy kliknie wywołuje się funkcja w opponent, linia 62, gdzie na serwer wysyłam koordy strzału, na serwerze sprawdzasz te koordy i zwracasz 1 lub zero jeśli trafiony lub nie
-4.mam funkcje w lini 30 main, do której maja trafić koordynaty strzału przeciwnika, nie sprawdzamy go, bo to sie dzieje na serwerze, ale trzeba go zapisać u klienta, czyli to, co serwer dostaje w 3 punkcie, to ma wysłać do drugiego gracza, ale jak dokładnie to rozwiązać to ty jestes specem, można zrobić zapytania co pół sekundy w enterframe...
+
+
+4.mam funkcje w lini 30 main, do której maja trafić koordynaty strzału przeciwnika, nie sprawdzamy go, bo to sie dzieje na serwerze, ale trzeba go zapisać u klienta, czyli to, co serwer dostaje w 3 punkcie, to ma wysłać do drugiego gracza, ale jak dokładnie to rozwiązać to ty jestes specem, można zrobić zapytania co pół sekundy w enterframe...  
+
+
+//(x,y) w poolingu jesli gracz wykonal ruch
+
+/*=============================================PUDELKOWA OBSLUGA SERWERA===================*/
+
+1. Rozroznienie gracza ktory to 1 ktory to 2. Po nazwie uzytkownika z sesjii. 
+	-w pliku game.php - Twoj index - dodalem zmienna (JS)currentPlayer do ktorej przypisuje wartosc z sesjii zalogowanej osoby.
+	-na poczatku pliku includujemy sendCurrentPlayer.php
+	-tam mamy ajaxa ktory ustawia w tabeli game wartosci p1,p2 i ustawia currentplayera w bazie na p1 - on zaczyna nie? bo jest 1.
+	-tworzy tez rekord w tabeli na ktorej bedzie dzialac cala rozgrywka
+	-zwraca do zmiennej w jsie nr wiersza w bazie danych ktory modyfikujemy potem
+	-dziala jak autostrart jak sie juz wejdziecie
+2. Wyslanie tablicy po kliknieciu zatwierz:
+	-mam tablice od Ciebie senarr[];
+
+		/*
+		var posArray = JSON.stringify(senarr[]);
+
+		$.ajax({
+			url: 'ajax/sendStartPos.php',
+			type: 'POST',
+			data: {posArray: posArray},
+		});
+		
+		*/
+
+
+
+
+
+
+
+
+
+
