@@ -35,7 +35,13 @@ function CreateBoard(){
 	             		cellContent.setAttribute("id","op:"+a+'.'+b);
 	             		cellContent.setAttribute("style","width: 24px;");
 	             		cellContent.setAttribute("onclick","SendFire(this.id)");
-	             		cellContent.disabled = false;
+	             		
+	             		if (currentPlayer==1) {
+	             			cellContent.disabled = false;
+	             		}else{
+	             			cellContent.disabled = true;
+	             		}
+	             		
 	             	}
 	                cell.appendChild(cellContent);
 	                row.appendChild(cell);
@@ -61,7 +67,27 @@ function SendFire(mleko){
 }
 
 function IfHit(y,x){
-	//console.log("x: "+x+" y: "+y);
-	//wysyłasz koordynaty x i y zwracasz czy trafiony (true) czy nie (false), koordynaty są zgodne z tablicą, x: 0 do 9, y tak samo
-	return Math.random() < 0.5;
+	$.ajax({
+			url: 'ajax/checkShipHit.php', 
+			type: 'POST',
+			data: {x: tmp_x, y:tmp_y},
+	}).completer(function(e){
+		//funkcja przy okazjii zmienia aktualnie grajacego gracze w tabeli pole "current" czyli jesli gramy 1 graczem i klikniemy sobie w (d,4) to jesli w tablicy przeciwnika (4,4) jest statek funkcja zwraca nam true; i nie zmieniamy aktualnego gracza, ale gry nie trafimy, zmienia nam sie aktualny gracz.
+		var tmp_isHitted = e.responseText;
+		if(tmp_isHitted){ //sprawdzenie czy trafilismy czy nie
+			return 1;
+		}else{
+			return 0;
+			closeButtons();
+		}
+	});
+}
+
+function closeButtons(){
+	for (var j = 0; j <= 9; j++) {
+		for (var i = 0; i < 9; i++) {
+			var bt = document.getElementById(j+"."+i);
+			bt.disabled = true;
+		}
+	}
 }
