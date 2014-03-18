@@ -30,6 +30,10 @@ samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
 
 /*=============================================PUDELKOWA OBSLUGA SERWERA===================*/
 
+//TWOJA NUMERACJA NIE MA NIC WSPOLNEGO Z MOJA.
+
+
+
 1. Rozroznienie gracza ktory to 1 ktory to 2. Po nazwie uzytkownika z sesjii. 
 	-w pliku game.php - Twoj index - dodalem zmienna (JS)currentPlayer do ktorej przypisuje wartosc z sesjii zalogowanej osoby.
 	-na poczatku pliku includujemy sendCurrentPlayer.php
@@ -96,6 +100,18 @@ samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
 			url: 'ajax/checkShipHit.php', 
 			type: 'POST',
 			data: {x: tmp_x, y:tmp_y},
+	}).completer(function(e){
+
+		//funkcja przy okazjii zmienia aktualnie grajacego gracze w tabeli pole "current" czyli jesli gramy 1 graczem i klikniemy sobie w (d,4) to jesli w tablicy przeciwnika (4,4) jest statek funkcja zwraca nam true; i nie zmieniamy aktualnego gracza, ale gry nie trafimy, zmienia nam sie aktualny gracz.
+
+		var tmp_isHitted = e.responseText;
+		if(tmp_isHitted){ //sprawdzenie czy trafilismy czy nie
+			//jelsi tak;
+		}else{
+			//jesli nie;
+		}
+	
+
 	});
 
 

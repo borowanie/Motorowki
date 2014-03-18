@@ -15,23 +15,38 @@ $pdo = new PDO("mysql:host=$host;dbname=$db_name", "$user","$pass");
 try {
 	$sth = $pdo->prepare("SELECT * FROM game WHERE id=$row");
 	$sth->execute();
+
+	
+
+
 } catch (Exception $e) {
 	throw $e;
 }
 $result = $sth->fetch();
 
+if($user == 1){
 
-if($_SESSION['actualPlayer'] == 1){
-	if($result["p2start"]=="1"){
-		echo $result["p2pos"];
+	$tab = var_dump(json_decode($result["p2pos"]));
+	if($tab[$x][$y] == 1){
+		return true;
 	}else{
-		echo "0";
+		return false;
+		if($user == 1)
+			$pdo->exec("UPDATE game SET current='2' WHERE id=$row");
+		else
+			$pdo->exec("UPDATE game SET current='1' WHERE id=$row");
 	}
 }else{
-	if($result["p1start"]=="1"){
-		echo $result["p1pos"];
+	
+	$tab = var_dump(json_decode($result["p1pos"]));
+	if($tab[$x][$y] == 1){
+		return true;
 	}else{
-		echo "0";
+		return false;
+		if($user == 1)
+			$pdo->exec("UPDATE game SET current='2' WHERE id=$row");
+		else
+			$pdo->exec("UPDATE game SET current='1' WHERE id=$row");
 	}
 }
 
