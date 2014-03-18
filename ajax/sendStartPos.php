@@ -1,22 +1,22 @@
 <?php
+session_start();
 include 'pass.php';
 
-$p1 = $_GET["p1"];
-$p2 = $_GET["p2"];
-$posArray = $_POST["posArray"];
 
+$posArray = $_POST["posArray"];
+$row = $_SESSION['databaseRow'];
 
 $pdo = new PDO("mysql:host=$host;dbname=$db_name", "$user","$pass");
 try {
-	$pdo->exec("INSERT INTO game (p1, p2, current) VALUES ('$p1', '$p2', '1')");
-	//
-	$sth = $pdo->prepare("SELECT * FROM game WHERE p1='$p1' AND p2='$p2' AND current='1'");
-	$sth->execute();	
+
+	if($_SESSION['actualPlayer'] == 1)
+		$pdo->exec("UPDATE game SET p1pos='$posArray', p1start='1' WHERE id=$row");
+	else
+		$pdo->exec("UPDATE game SET p2pos='$posArray', p2start='1' WHERE id=$row");
+
 } catch (Exception $e) {
 	echo 'Caught exception: ',  $e->getMessage(), "\n";
 }
-$result = $sth->fetch();
-echo $result["id"];
 
 ?>
 

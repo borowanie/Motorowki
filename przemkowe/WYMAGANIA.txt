@@ -10,6 +10,9 @@ ad3.Tak, ad2 ci opisałem i raczej tyle
 ad4.Ty decyduj, opisałem w komentarzach, co potrzebuje, żeby było zwrócone
 
 
+
+/////////////////////////////////////////////
+
 1.main.js, linia 69 ta funkcja sie wykonuje po kliku "zatwierdź", w bazie masz zapisać tablice "senarr", która zawiera "moje" statki (1 to statek, 0 brak statku xD)
 
 
@@ -34,19 +37,22 @@ samej funkcji co powyżej, gdy przeciwnik już wysle swoją tablice
 	-tworzy tez rekord w tabeli na ktorej bedzie dzialac cala rozgrywka
 	-zwraca do zmiennej w jsie nr wiersza w bazie danych ktory modyfikujemy potem
 	-dziala jak autostrart jak sie juz wejdziecie
-2. Wyslanie tablicy po kliknieciu zatwierz:
+2. Wyslanie tablicy po kliknieciu zatwierdź:
 	-mam tablice od Ciebie senarr[];
 
-		/*
+		/*Tu masz ajaxa ktorego sobie wrypiesz gdzie bedziesz chcial
+
 		var posArray = JSON.stringify(senarr[]);
 
 		$.ajax({
-			url: 'ajax/sendStartPos.php',
+			url: 'ajax/sendStartPos.php', //kurwa jak ten plik dziala - i don't kurwa know nie pytaj. ALE DZIALA:P
 			type: 'POST',
 			data: {posArray: posArray},
 		});
 		
 		*/
+
+3. 
 
 
 
